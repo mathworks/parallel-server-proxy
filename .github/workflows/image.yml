@@ -27,5 +27,5 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: ghcr.io/mathworks-ref-arch/parallel-server-proxy:${{ github.event.release.tag_name }}
+        tags: ghcr.io/mathworks/parallel-server-proxy:${{ github.event.release.tag_name }}
 
