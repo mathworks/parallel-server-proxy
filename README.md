@@ -1,6 +1,6 @@
 # Proxy for MATLAB Parallel Server&trade;
 
-Use the parallelserverproxy to start a proxy server which can proxy all traffic between a MATLAB&reg; client and a MATLAB Parallel Server cluster.
+Use the parallelserverproxy to start a proxy server which can proxy all traffic between a MATLAB&reg; client and a MATLAB Job Scheduler cluster.
 This can be used to create a single access point for the cluster on the host where the parallelserverproxy is run and via the port specified.
 
 The parallelserverproxy uses the SOCKS protocol to allow connecting clients to specify the destination to connect to. Authentication of connecting clients is provided by
@@ -29,13 +29,30 @@ You can download pre-compiled binaries for Linux&reg; and Windows&reg; from the 
 `parallelserverproxy [<args>]` starts a proxy server using the specified input arguments.
 - `args` - Inputs to the proxy server.
 
-Once connected, the url clients use to connect to the proxy is printed. For example:
+Before starting the proxy, install the `mjssetup` tool from the [mjssetup GitHub repository](https://github.com/mathworks/mjssetup).
+Create a secret file using the `mjssetup` tool.
+For example, create a shared secret file with the name "secret.json".
+```
+mjssetup create-shared-secret -outfile "secret.json"
+```
+
+Generate a signed certificate from the shared secret using the `mjssetup` tool.
+For example, from the shared secret file "secret.json", generate a signed certificate "proxy-certificate.json".
+```
+mjssetup generate-certificate -secretfile "secret.json" -outfile "proxy-certificate.json"
+```
+
+Start the SOCKS5 proxy server.
+For example, start a server that listens on port 1080 and uses the signed certificate file "proxy-certificate.json".
+When the proxy server starts, `parallelserverproxy` displays the URL template for the proxy server.
 ```
 parallelserverproxy -port 1080 -certificate "proxy-certificate.json"
-Starting SOCKS5 proxy on socks5s://*:1080
 ```
-Connecting clients should then specify the proxy url as `socks5s://<proxyHost>:1080` to access the cluster via the proxy, where
-proxyHost should be replaced with the resolvable hostname or IP address of the machine running the proxy server.
+`SOCKS5 proxy ready to accept connections at: socks5s://*:1080`
+
+To connect to MATLAB Job Scheduler via the proxy server, MATLAB clients must have a corresponding client certificate file signed with the cluster secret file for authentication.
+You can create a certified profile that incorporates the signed certificate file and the proxy URL to enable clients to connect to the cluster.
+For instructions, see [Configure SOCKS5 Proxy for MATLAB Job Scheduler](https://www.mathworks.com/help/matlab-parallel-server/configure-socks5-proxy-for-matlab-job-scheduler.html) on the MathWorks website.
 
 To display the help text for parallelserverproxy, run
 ```
@@ -98,4 +115,4 @@ The license is available in the [license.txt](license.txt) file in this reposito
 
 If you require assistance or have a request for additional features or capabilities, contact [MathWorks Technical Support](https://www.mathworks.com/support/contact_us.html).
 
-Copyright 2024-2025 The MathWorks, Inc.
+Copyright 2024-2026 The MathWorks, Inc.
