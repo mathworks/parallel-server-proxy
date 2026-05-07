@@ -10,17 +10,17 @@ You do not require access to a MATLAB installation.
 
 ## Installation
 
-You can download pre-compiled binaries for Linux&reg; and Windows&reg; from the [Releases](https://github.com/mathworks/parallelserverproxy/releases) page.
+You can download pre-compiled binaries for Linux&reg; and Windows&reg; from the [Releases](https://github.com/mathworks/parallel-server-proxy/releases) page.
 
 ### Installation on Linux
 
-1. Navigate to the [Releases](https://github.com/mathworks/parallelserverproxy/releases) page.
+1. Navigate to the [Releases](https://github.com/mathworks/parallel-server-proxy/releases) page.
 2. Download the latest `parallelserverproxy-glnxa64.tar.gz` file from the assets section of the latest release.
 3. To extract the binary, in the terminal, run `tar -xzf parallelserverproxy-glnxa64.tar.gz`.
 
 ### Installation on Windows
 
-1. Navigate to the [Releases](https://github.com/mathworks/parallelserverproxy/releases) page.
+1. Navigate to the [Releases](https://github.com/mathworks/parallel-server-proxy/releases) page.
 2. Download the latest `parallelserverproxy-win64.zip` file from the assets section of the latest release.
 3. To extract the binary, unzip the `parallelserverproxy-win64.zip` file.
 
