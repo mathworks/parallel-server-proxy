@@ -1,7 +1,7 @@
 # Copyright 2025-2026 The MathWorks, Inc.
 
 # Stage 1: Build the proxy executable
-FROM golang:1.26.1 AS builder
+FROM golang:1.26 AS builder
 WORKDIR /app
 COPY . /app
 RUN go version
