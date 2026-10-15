@@ -1,4 +1,4 @@
-# Copyright 2024-2025 The MathWorks, Inc.
+# Copyright 2024-2026 The MathWorks, Inc.
 name: Release Artifacts
 
 on:
@@ -6,7 +6,7 @@ on:
     types: [created]
 
 env:
-  go_version: 1.26
+  go_version: 1.27
 
 jobs:
   release-linux:
